@@ -1,0 +1,116 @@
+<html>
+  
+  <!-- See live at https://codepen.io/paulera/pen/ejGKEr -->
+  
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
+  </head>
+  <body>
+
+    <div style="width:800px;"><canvas id="Q400"></canvas></div>
+    <script>
+      /**
+       * Sum elements of an array up to the index provided.
+       */
+      function sumArrayUpTo(arrData, index) {
+        var total = 0;
+        for (var i = 0; i <= index; i++) {
+          if (arrData.length > i) {
+            total += arrData[i];
+          }
+        }
+        console.log(i)
+        return total;
+      }
+  
+      function showBurnDown(elementId, burndownData, scopeChange = []) {
+  
+        var speedCanvas = document.getElementById(elementId);
+  
+        Chart.defaults.global.defaultFontFamily = "Arial";
+        Chart.defaults.global.defaultFontSize = 14;
+  
+        const totalSquawks = burndownData[0];
+        const idealSquawksPerDay = totalSquawks / 8;
+        i = 0;
+  
+        var squawkData = {
+
+          labels: ["MAR 9","MAR 10","MAR 11","MAR 12","MAR 13","MAR 14","MAR 15","MAR 16","MAR 17"],
+          datasets: [ 
+            {
+              label: "Burndown",
+              data: burndownData,
+              fill: false,
+              borderColor: "#EE6868",
+              backgroundColor: "#EE6868",
+              lineTension: 0,
+            },
+            {
+              label: "Ideal",
+              borderColor: "#6C8893",
+              backgroundColor: "#6C8893",
+              lineTension: 0,
+              borderDash: [5, 5],
+              fill: false,
+              data: [
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 0)), // 1
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 1)), // 2
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 2)), // 3
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 3)), // 4
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 4)), // 5
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 5)), // 6
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 6)), // 7
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 7)), // 8
+                Math.round(totalSquawks - (idealSquawksPerDay * i++) + sumArrayUpTo(scopeChange, 8)), // 9
+              ]
+            },
+          ]
+        };
+  
+        var chartOptions = {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              boxWidth: 80,
+              fontColor: 'BLACK'
+            }
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      min: 0,
+                      max: 175/*Math.round(burndownData[0] * 1.5)*/
+                  }
+              }]
+          }
+        };
+  
+        var lineChart = new Chart(speedCanvas, {
+          type: 'line',
+          data: squawkData,
+          options: chartOptions
+        });
+  
+      }
+      </script>
+    <script>
+    showBurnDown (
+      "Q400",
+      //   1    2    3    4    5    6    7    8    9   10
+      [129], // burndown data
+      [0,   0,   0,   0,   0, 0,   0,   0,   0]  // scope change
+    );
+    </script>
+    <h1 id = "ideal_burn"></h1>
+    <script>
+      let idealBurn = document.querySelector("#ideal_burn")
+      idealBurn.innerHTML = "Q400 Snag Burndown"
+    </script>
+  
+  </body>
+</html>
+
+
