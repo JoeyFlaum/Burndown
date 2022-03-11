@@ -25,7 +25,10 @@ padding:.5rem;
 border-bottom: 1px black solid;
 word-spacing:.2rem ;
 }
-
+#excel{
+    margin-top: 5rem;
+    margin-bottom:-2rem;
+}
 #excel_sheet{
     margin-top: 5rem;
 }
