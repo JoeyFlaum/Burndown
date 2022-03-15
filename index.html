@@ -16,7 +16,7 @@
       let idealBurn = document.querySelector("#ideal_burn")
       idealBurn.innerHTML = "Q400 Snag Burndown"
   
-      function showBurnDown(elementId, burndownData, scopeChange = []) {
+      function showBurnDown(elementId, burndownData, scopeChange = [], customerBurn) {
         var speedCanvas = document.getElementById(elementId);
   
         Chart.defaults.global.defaultFontFamily = "Arial";
@@ -37,7 +37,7 @@
           labels: labelsArray,
           datasets: [ 
             {
-              label: "Burndown",
+              label: "FCC Burn",
               data: burndownData,
               fill: false,
               borderColor: "#EE6868",
@@ -52,6 +52,14 @@
               borderDash: [5, 5],
               fill: false,
               data: idealPoints
+            },
+            {
+              label: "Conair Burn",
+              borderColor: "#0000ff",
+              backgroundColor: "#0000ff",
+              lineTension: 0,
+              fill: false,
+              data: customerBurn
             },
           ]
         };
@@ -86,10 +94,11 @@
     <script>
     showBurnDown (
       "Q400",
-      [140,163,134,133,148,149], // burndown data
+      [140,163,134,133,148,149,141], // burndown data
       //[197,240,208,176,190] // scope change with totals
-      [197,226,194,162,176] // scope change
-    );
+      [197,226,194,162,176], // scope change
+      [172,199,199,199,199,200,193],
+      );
 
 
     </script>
