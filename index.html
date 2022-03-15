@@ -22,7 +22,7 @@
         Chart.defaults.global.defaultFontFamily = "Arial";
         Chart.defaults.global.defaultFontSize = 14;
   
-        let labelsArray = ["MAR 9","MAR 10","MAR 11","MAR 12","MAR 13","MAR 14","MAR 15","MAR 16","MAR 17"]
+        let labelsArray = ["MAR 9","MAR 10","MAR 11","MAR 12","MAR 13","MAR 14","MAR 15","MAR 16","MAR 17","Mar 18"]
         let lastScopeChangeValue = scopeChange[scopeChange.length-1]
         let idealPoints = scopeChange.map((dataPoint)=>dataPoint)
         //map ideal points and last point = 0 
@@ -94,10 +94,10 @@
     <script>
     showBurnDown (
       "Q400",
-      [140,163,134,133,148,149,141], // burndown data
+      [140,163,134,133,148,149,141,126], // burndown data
       //[197,240,208,176,190] // scope change with totals
       [197,226,194,162,176], // scope change
-      [172,199,199,199,199,200,193],
+      [172,199,199,199,199,200,193,174],
       );
 
 
