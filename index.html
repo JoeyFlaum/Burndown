@@ -1,13 +1,14 @@
 <html>
   
-  <!-- See live at https://codepen.io/paulera/pen/ejGKEr -->
+  <!-- See live at https://codepen.io/paulera/pen/ejGKEr    --modified -->  
+
   
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
-    <div id = "main_container">
+    <div id = "main_container"> 
     <h1 id = "ideal_burn"></h1>
     <div id = "chart_wrapper">
     <div style="width:800px;"><canvas id="Q400"></canvas></div>
@@ -94,10 +95,10 @@
     <script>
     showBurnDown (
       "Q400",
-      [140,163,134,133,148,149,141,126], // burndown data
+      [140,163,134,133,148,149,141,126,132], // burndown data
       //[197,240,208,176,190] // scope change with totals
-      [197,226,194,162,176], // scope change
-      [172,199,199,199,199,200,193,174],
+      [197,226,194,162,176,141,106,71,38], // scope change
+      [172,199,199,199,199,200,193,174,151],//conair 
       );
 
 
